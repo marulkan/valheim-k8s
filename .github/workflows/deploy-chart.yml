@@ -27,7 +27,7 @@ jobs:
         run: |
           export GIT_EMAIL=${{ secrets.GIT_EMAIL }}
           export CH_TOKEN=${{ secrets.GIT_TOKEN }}
-          export GIT_REPOSITORY_URL=https://github.com/addyvan/valheim-k8s
+          export GIT_REPOSITORY_URL=https://github.com/marulkan/valheim-k8s
           
           version=$(cat version)
           

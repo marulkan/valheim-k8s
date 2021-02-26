@@ -11,6 +11,8 @@ spec:
       labels:
         app: valheim-server
     spec:
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -18,6 +20,8 @@ spec:
       containers:
       - image: lloesche/valheim-server:latest
         name: vailheim-server
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
         env:
         - name: SERVER_NAME
           value: {{ .Values.serverName }}
@@ -25,6 +29,8 @@ spec:
           value: {{ .Values.worldName }}
         - name: SERVER_PASS
           value: {{ .Values.password }}
+        - name: VALHEIM_PLUS
+          value: {{ .Values.valheimplus }}
         ports:
         - containerPort: 2456
           name: game1
